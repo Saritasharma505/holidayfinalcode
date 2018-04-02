@@ -240,8 +240,17 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add</button>
-                           
+                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">ADD </button>
+                          <!--  @if (session('success'))
+                                <div class="flash-message">
+                                <div class="alert alert-success">
+
+                                </div>
+                                </div>
+                            @endif -->
+                            @if (Session::has('message'))
+                                 <div id="alert" class="alert alert-info">{{ Session::get('message') }}</div>
+                            @endif
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -262,9 +271,9 @@
                                 </thead>
                                 
                                 <tbody>
-                                    <?php foreach($admins as $admin){?>
+                                    <?php $i=1; foreach($admins as $admin){?>
                                     <tr class="odd gradeX">
-                                       <td></td>
+                                       <td><?= $i++;?></td>
                                         <td><?= $admin->name;?></td>
                                          <td><?= $admin->email;?></td>
                                          <td><?= $admin->phone;?></td>
@@ -273,7 +282,7 @@
                                          
                                          
 
-                                        <td><a  class="fa fa-pencil" href="{{url('/adminuser/edit-admin')}}/<?= $admin->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash" href=""></a></td>
+                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/admin-user/edit-admin')}}/<?= $admin->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{ url('/admin-user/delete-admin')}}/<?= $admin->id;?>" onclick="return confirm('Are you sure you want to delete this item?');"></a></td>
                                     </tr>
                                     <?php }?>
                                 </tbody>
@@ -302,49 +311,47 @@
                           <div class="modal-body">
                        
                         
-                                    <form role="form">
+                                    <form role="form" method="post" action="{{ route('store') }}">
                                         <?php echo csrf_field();?>
                                         <div class="form-group">
                                             <label>DSA Name</label>
-                                            <input class="form-control" placeholder="Enter DSA Name">
+                                            <input class="form-control" name="name" id="dsa_name">
                                             
                                         </div>
                                         <div class="form-group">
                                             <label>Email-ID</label>
-                                            <input class="form-control" placeholder="Enter Email-Id">
+                                            <input class="form-control" name="email" id="dsa_email" placeholder="Enter Email-Id">
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" placeholder="Password">
+                                            <input class="form-control" name="password" id="dsa_pass" placeholder="Password">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Confirm-Password</label>
-                                            <input class="form-control" placeholder="Confirm-Password">
-                                        </div>
+                                       
                                         <div class="form-group">
                                             <label>Mobile No.</label>
-                                            <input class="form-control" placeholder="Enter text">
+                                            <input class="form-control" name="phone" id="dsa_phone" placeholder="Enter text">
                                         </div>
                                         <div class="form-group">
                                             <label>Role</label>
-                                            <select class="form-control" placeholder="Enter text">
+                                            <select class="form-control" name="role" id="dsa_role" placeholder="Enter text">
                                                 <option>Please Select Role</option>
                                                 <?php foreach($roles as $role){?>
                                                 <option value="<?php echo $role->roleId?>"><?php echo $role->role?></option><?php }?>
                                         </select></div>
+
                                         <div class="form-group">
                                             <label>Location</label>
-                                            <select  class="form-control" placeholder="Enter text">
+                                            <select  class="form-control" name="dsa_location" id="dsa_location" placeholder="Enter text">
                                                 <option>Please Select</option>
                                                 <?php foreach($locations as $location){ ?>
                                                 <option value="<?php echo $location->id;?>"><?php echo $location->locationName;?></option>
                                                 <?php }?>
                                             </select>
                                         </div>
+                                        
                                 
                                        
                                         <button type="submit" class="btn btn-info" name="submit">Submit</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                         
                                     </form>
                                 
@@ -361,5 +368,12 @@
             
             <!-- /.row -->
         </div>
-            
+      
+    <script>
+   window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 4000);
+    </script>
 @include('admin.layout.footer')

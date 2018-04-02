@@ -15,13 +15,14 @@ class CreateTblWebusersTable extends Migration
     {
         Schema::create('tbl_webusers', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('createDete');
             $table->string('name');
             $table->string('email');
             $table->integer('phone');
             $table->string('password');
-            $table->integer('status');
-            $table->string('role');
+            $table->integer('status')->default(0);
+            $table->integer('role');
+             $table->integer('location');
+            $table->date('createDete')->default(NULL);
             $table->timestamps();
         });
     }

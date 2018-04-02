@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Admin;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
 {
@@ -40,10 +43,19 @@ class AdminController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * name   email   phone   password    status  role 
      */
     public function store(Request $request)
     {
-        //
+       
+       $name = $request->input('name');
+       $email = $request->input('email');
+      // $today = date("y/m/d");
+       $phone = $request->input('phone');
+       $password = $request->input('password');
+       $role = $request->input('role');
+      $data=DB::insert("insert into tbl_webusers(name,email,phone,password,role) values('$name','$email','$phone','$password','$role')");
+      return back();
     }
 
     /**
@@ -66,8 +78,9 @@ class AdminController extends Controller
     public function edit($id)
     {
          
-        $update_admins = Admin::find($id)->get();
-
+        $update_admins = Admin::where('id',$id)->get();
+        
+        //dd($data);
         $roles=DB::table('tbl_roles')->get();
         $locations=DB::table('tbl_locations')->get();
         $arrayName = array('roles' => $roles, 'locations'=>$locations,'update_admins'=>$update_admins);
@@ -94,6 +107,16 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete_admin= Admin::find($id)->delete();
+        //$request->session()->flash('message'=>'Record Deleted Successfully');
+       Session::flash('message', 'Record Deleted Successfully!!');
+       return  redirect()->action('AdminController@index');
+      
+         
+    }
+
+    public function dashboard()
+    {
+        return view('admin.dashboard');
     }
 }

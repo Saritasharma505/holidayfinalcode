@@ -8,7 +8,7 @@
                             <a href="{{url('/dashboard')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{url('/adminuser')}}"><i class="fa fa-user"></i> Admin User</a>
+                            <a href="{{url('/admin-user')}}"><i class="fa fa-user"></i> Admin User</a>
                             
                             <!-- /.nav-second-level -->
                         </li>

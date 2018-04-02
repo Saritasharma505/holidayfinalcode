@@ -259,14 +259,14 @@
                                 </thead>
                                 
                                 <tbody>
-                                    <?php foreach($locations as $location){?>
+                                    <?php $i=1; foreach($locations as $location){?>
                                     <tr class="odd gradeX">
-                                       <td></td>
+                                       <td><?= $i++;?></td>
                                         
                                          <td><?= $location->locationName;?></td>
                                          <td><?= $location->status;?></td>
                                         
-                                        <td><a  class="fa fa-pencil" href="{{url('/member/edit')}}/<?= $location->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash" href=""></a></td>
+                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/member/edit')}}/<?= $location->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href=""></a></td>
                                     </tr>
                                     <?php }?>
                                 </tbody>

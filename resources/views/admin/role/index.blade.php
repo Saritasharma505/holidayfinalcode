@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                <a class="navbar-brand" href="index.html">The Holidays Club</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -233,7 +233,7 @@
          <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><a href="{{url('add')}}">Add</a></h3>
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Add Role</button>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -251,41 +251,20 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th></th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>Assign To</th>
+                                        <th>Action</th>
+                                        
                                     </tr>
-                                </thead>
+                                </thead> 
                                 <tbody>
+                                    <?php $i=1; foreach($roles as $role){?>
                                     <tr class="odd gradeX">
-                                        <td>Trident</td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
+                                        <td><?= $i++;?></td>
+                                        <td><?= $role->role?></td>
+                                        <td><?= $role->assignSections?></td>
+                                        <td><a class="fa fa-pencil btn btn-primary" href="{{url('role/edit-role')}}/<?= $role->roleId;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{url('role/delete-role')}}/<?= $role->roleId;?>"></a></td>
                                     </tr>
-                                    <tr class="even gradeC">
-                                        <td>Trident</td>
-                                        <td>Internet Explorer 5.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">5</td>
-                                        <td class="center">C</td>
-                                    </tr>
-                                    <tr class="odd gradeA">
-                                        <td>Trident</td>
-                                        <td>Internet Explorer 5.5</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">5.5</td>
-                                        <td class="center">A</td>
-                                    </tr>
-                                   
-                                    <tr class="gradeU">
-                                        <td>Other browsers</td>
-                                        <td>All others</td>
-                                        <td>-</td>
-                                        <td class="center">-</td>
-                                        <td class="center">U</td>
-                                    </tr>
+                                   <?php }?>
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -297,6 +276,28 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+             <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content ">
+                  <div class="modal-header ">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Role</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="role" id="role">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+            </div>
+  </div>
             <!-- /.row -->
             
             <!-- /.row -->

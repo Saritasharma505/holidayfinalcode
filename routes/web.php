@@ -14,7 +14,9 @@ Route::group(['middleware' => 'web'], function () {
     // Frontend
     Route::auth();
 
-   Route::get('/home', 'HomeController@index');
+   Route::get('/', 'HomeController@index',function(){
+    return view('admin.login');
+   });
 
     Route::resource('posts', 'PostController');
 
@@ -31,9 +33,11 @@ Route::get('/role','RolesController@index')->name('index');
 Route::get('/member','MembersController@index')->name('index');
 Route::get('/location','LocationsController@index')->name('index');
 
-Route::get('/adminuser','AdminController@index')->name('index');
-Route::get('/adminuser/add-admin','AdminController@create')->name('create');
-Route::get('/adminuser/edit-admin/{id}','AdminController@edit')->name('edit');
+Route::get('/admin-user','AdminController@index')->name('index');
+Route::get('/admin-user/add-admin','AdminController@create')->name('create');
+Route::get('/admin-user/edit-admin/{id}','AdminController@edit')->name('edit');
+Route::get('/admin-user/delete-admin/{id}','AdminController@destroy')->name('destroy');
+Route::post('/admin-user/store-admin','AdminController@store')->name('store');
 
 Route::get('/payment','PaymentController@index')->name('index');
 Route::get('/holiday-request-get-all-details','HolidayController@index')->name('index');
@@ -43,4 +47,5 @@ Route::get('/voucher','VoucherController@index')->name('index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/dashboard','AdminController@dashboard')->name('dashboard');

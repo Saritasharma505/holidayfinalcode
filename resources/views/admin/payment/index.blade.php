@@ -277,7 +277,7 @@
                                          
                                          
 
-                                        <td><a  class="fa fa-pencil" href="{{url('/member/edit')}}/<?= $payment->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash" href=""></a></td>
+                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/member/edit')}}/<?= $payment->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href=""></a></td>
                                     </tr>
                                     <?php }?>
                                 </tbody>

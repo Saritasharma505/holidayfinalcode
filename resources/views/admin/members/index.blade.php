@@ -276,9 +276,9 @@
                                 </thead>
                                 
                                 <tbody>
-                                    <?php foreach($members as $member){?>
+                                    <?php $i=1; foreach($members as $member){?>
                                     <tr class="odd gradeX">
-                                       <td></td>
+                                       <td><?= $i++;?></td>
                                         <td><?= $member->memberShipid;?></td>
                                          <td><?= $member->m_name;?></td>
                                          <td><?= $member->c_name;?></td>
@@ -300,7 +300,7 @@
                                          <td><?= $member->member_offer;?></td>
                                          
 
-                                        <td><a  class="fa fa-pencil" href="{{url('/member/edit')}}/<?= $member->memberShipid;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash" href=""></a></td>
+                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/member/edit')}}/<?= $member->memberShipid;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href=""></a></td>
                                     </tr>
                                     <?php }?>
                                 </tbody>
