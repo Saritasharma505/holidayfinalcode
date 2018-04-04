@@ -232,9 +232,7 @@
 
          <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
-                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Add Role</button>
-                </div>
+               
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
@@ -242,38 +240,51 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Roles List
-                        </div>
-                     @if (Session::has('message'))
-                         <div id="alert" class="alert alert-info">{{ Session::get('message') }}</div>
-                    @endif
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD </button>
+                          <!--  @if (session('success'))
+                                <div class="flash-message">
+                                <div class="alert alert-success">
 
-                   
+                                </div>
+                                </div>
+                            @endif -->
+                            @if (Session::has('message'))
+                                 <div id="alert" class="alert alert-info">{{ Session::get('message') }}</div>
+                            @endif
+                        </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                            <div class="pre-scrollable">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Assign To</th>
+                                        <th>Admin Name</th>
+                                        <th>Site Name</th>
+                                        <th>Admin Amount</th>
+                                        <th>AMC Amount</th>
                                         <th>Action</th>
-                                        
+                                       
                                     </tr>
-                                </thead> 
+                                </thead>
+                                
                                 <tbody>
-                                    <?php $i=1; foreach($roles as $role){?>
+                                    <?php $i=1; foreach($config_details as $config_detail){?>
                                     <tr class="odd gradeX">
-                                        <td><?= $i++;?></td>
-                                        <td><?= $role->role;?></td>
-                                        <td><?= $role->assignSections;?></td>
-                                        <td><a class="fa fa-pencil btn btn-primary" href="{{url('role/edit-role')}}/<?= $role->roleId;?>"></a>&nbsp;&nbsp;&nbsp;
-                                            <a class="fa fa-trash btn btn-danger" href="{{url('role/delete-roles')}}/<?= $role->roleId;?>" onclick="return confirm('Are you sure you want to delete this item?');"></a></td>
+                                       <td><?= $i++;?></td>
+                                        <td><?= $config_detail->admin_id;?></td>
+                                         <td><?= $config_detail->site_name;?></td>
+                                         <td><?= $config_detail->admin_amount;?></td>
+                                         <td><?= $config_detail->amc_amount;?></td>
+
+
+                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/config_detail/edit-config')}}/<?= $config_detail->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{ url('/configuration-detail/delete-config')}}/<?= $config_detail->id;?>" onclick="return confirm('Are you sure you want to delete this item?');"></a></td>
                                     </tr>
-                                   <?php }?>
+                                    <?php }?>
                                 </tbody>
+
                             </table>
-                            <!-- /.table-responsive -->
+                            </div><!-- /.table-responsive -->
                             
                         </div>
                         <!-- /.panel-body -->
@@ -282,50 +293,64 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-             <div id="myModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
+            <!-- /.row -->
+            <!-- model -->
+            <div id="myModal" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content ">
-                  <div class="modal-header ">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                           
+                            <h4 class="modal-title">Add Admin</h4>
+                          </div>
+                          <div class="modal-body">
+                       
+                        
+                                    <form role="form" method="post" action="{{ route('store') }}">
+                                        <?php echo csrf_field();?>
+                                        <div class="form-group">
+                                            <label>DSA Name</label>
+                                            <input class="form-control" name="name" id="dsa_name">
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email-ID</label>
+                                            <input class="form-control" name="email" id="dsa_email" placeholder="Enter Email-Id">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            <input class="form-control" name="password" id="dsa_pass" placeholder="Password">
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <label>Mobile No.</label>
+                                            <input class="form-control" name="phone" id="dsa_phone" placeholder="Enter text">
+                                        </div>
+                                       
+                                        <button type="submit" class="btn btn-info" name="submit">Submit</button>
+                                        
+                                    </form>
+                                
+                 
+                         
+                          <div class="modal-footer">
+                            
+                          </div>
+                        </div>
 
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add Role</h4>
-                  </div>
-                  
-                  <div class="modal-body">
-                    <form method="post" action="{{ url('role/store') }}">
-                        <?php echo csrf_field();?>
-                    <div class="form-group">
-                        <label> Role Name</label>
-                        <input type="text" name="role" id="role">
+                      </div>
                     </div>
-                    <div class="form-group">
-                        <label>Assign TO</label>
-                        <input type="text" name="assignSections" id="assignSections">
-                    </div>
-                   
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                    <button type="submit"  class="btn btn-info pull-left" name="submit" id="assignSections">Submit </button> 
-                  </div>
-                  </form>
-                </div>
-            </div>
+            <!-- close -->
+            
+            <!-- /.row -->
         </div>
-            <!-- /.row -->
-            
-            <!-- /.row -->
- <script>
+      
+    <script>
    window.setTimeout(function() {
-        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
         $(this).remove(); 
-        });
-        }, 4000);
+    });
+}, 4000);
     </script>
-  </div>
-
-    
-            
 @include('admin.layout.footer')

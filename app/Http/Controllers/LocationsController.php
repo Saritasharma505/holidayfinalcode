@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use DB;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use App\Locations;
 
 class LocationsController extends Controller
 {
@@ -81,6 +84,8 @@ class LocationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+       Locations::find($id)->delete();
+       Session::flash('message','Record Deleted Successfully');
+       return back();
     }
 }

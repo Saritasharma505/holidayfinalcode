@@ -232,8 +232,8 @@
 
          <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
-                    <h3 class="page-header"><a href="{{url('add')}}">Add</a></h3>
+                 <div class="col-lg-12">
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Add Location</button>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -242,7 +242,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                            Locations List
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -266,7 +266,7 @@
                                          <td><?= $location->locationName;?></td>
                                          <td><?= $location->status;?></td>
                                         
-                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/member/edit')}}/<?= $location->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href=""></a></td>
+                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/location/edit')}}/<?= $location->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{url('/location/delete')}}/<?= $location->id;?>" onclick="return confirm('Are you sure you want to delete this item?');"></a></td>
                                     </tr>
                                     <?php }?>
                                 </tbody>
@@ -285,5 +285,37 @@
             
             <!-- /.row -->
         </div>
+        <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content ">
+                  <div class="modal-header ">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Location</h4>
+                  </div>
+                  
+                  <div class="modal-body">
+                    <form method="post" action="{{ url('role/store') }}">
+                        <?php echo csrf_field();?>
+                    <div class="form-group">
+                        <label> Location Name</label>
+                        <input type="text" name="locationName" id="locationName">
+                    </div>
+                    <div class="form-group">
+                        <label>Assign TO</label>
+                        <input type="text" name="assignSections" id="assignSections">
+                    </div>
+                   
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                    <button type="submit"  class="btn btn-info pull-left" name="submit" id="assignSections">Submit </button> 
+                  </div>
+                  </form>
+                </div>
+            </div>
+        </div></div>
             
 @include('admin.layout.footer')

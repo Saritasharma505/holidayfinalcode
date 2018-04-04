@@ -54,7 +54,9 @@ class AdminController extends Controller
        $phone = $request->input('phone');
        $password = $request->input('password');
        $role = $request->input('role');
-      $data=DB::insert("insert into tbl_webusers(name,email,phone,password,role) values('$name','$email','$phone','$password','$role')");
+       $location = $request->input('location');
+      $data=DB::insert("insert into tbl_webusers(name,email,phone,password,role,location) values('$name','$email','$phone','$password','$role','$location')");
+      Session::flash('message','Record Inserted Successfully');
       return back();
     }
 

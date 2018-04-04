@@ -240,7 +240,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">ADD </button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD </button>
                           <!--  @if (session('success'))
                                 <div class="flash-message">
                                 <div class="alert alert-success">
@@ -260,7 +260,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>DSA Name</th>
-                                        <th>Emil-ID</th>
+                                        <th>Email-ID</th>
                                         <th>Phone No.</th>
                                         <th>Role</th>
                                         <th>Location</th>
@@ -277,11 +277,19 @@
                                         <td><?= $admin->name;?></td>
                                          <td><?= $admin->email;?></td>
                                          <td><?= $admin->phone;?></td>
-                                         <td></td>
-                                         <td></td>
-                                         
-                                         
+                                        
+                                         <?php foreach ($roles as $rol) {
+                                             if ($rol->roleId==$admin->role) { ?>
+                                                 <td><?= $rol->role;?></td>
+                                             <?php }?>
+                                         <?php } ?>
 
+                                         <?php foreach($locations as $location){
+                                         if($location->id==$admin->location) { ?>
+                                         <td><?= $location->locationName;?></td>
+                                        <?php  } ?>
+
+                                        <?php } ?>
                                         <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/admin-user/edit-admin')}}/<?= $admin->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{ url('/admin-user/delete-admin')}}/<?= $admin->id;?>" onclick="return confirm('Are you sure you want to delete this item?');"></a></td>
                                     </tr>
                                     <?php }?>
@@ -341,7 +349,7 @@
 
                                         <div class="form-group">
                                             <label>Location</label>
-                                            <select  class="form-control" name="dsa_location" id="dsa_location" placeholder="Enter text">
+                                            <select  class="form-control" name="location" id="location" placeholder="Enter text">
                                                 <option>Please Select</option>
                                                 <?php foreach($locations as $location){ ?>
                                                 <option value="<?php echo $location->id;?>"><?php echo $location->locationName;?></option>

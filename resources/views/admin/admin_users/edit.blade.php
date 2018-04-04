@@ -77,7 +77,8 @@
                                         <div class="form-group">
                                             <label>Location</label>
                                             <select  class="form-control" placeholder="Enter text">
-                                               <option value="<?= $update_admin->phone?>"><?= $update_admin->role;?></option>
+                                                <?php foreach($roles as $role)?>
+                                               <option value="<?php echo $role->roleId;?>"><?php echo $role->role;?></option>
                                                 <?php foreach($locations as $location){ ?>
                                                 <option value="<?php echo $location->id;?>"><?php echo $location->locationName;?></option>
                                                 <?php }?>
@@ -88,10 +89,6 @@
                                     <div class="col-md-7 col-md-offset-5">
                                         <button type="submit" class="btn btn-info" name="submit">Submit</button>
                                     </div>
-                                   
-                                        
-                                
-                                       
                                         
                                         <?php }?>
                                     </form>

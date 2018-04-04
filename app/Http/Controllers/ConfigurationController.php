@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Configuration;
+use Illuminate\Support\Facades\Session;
 
 class ConfigurationController extends Controller
 {
@@ -13,7 +16,8 @@ class ConfigurationController extends Controller
      */
     public function index()
     {
-        //
+        $config_details= DB::table('tbl_admins')->get();
+        return view('admin.config.index',compact('config_details'));
     }
 
     /**
@@ -79,6 +83,8 @@ class ConfigurationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete_config = Configuration::find($id)->delete();
+        Session::flash('message','Record Deleted Successfully!!');
+        return back();
     }
 }

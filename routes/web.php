@@ -29,9 +29,18 @@ Route::group(['middleware' => 'web'], function () {
     });
 });
 
+Route::get('/',function(){
+    return view('admin.login');
+   });
+
 Route::get('/role','RolesController@index')->name('index');
+Route::post('/role/store','RolesController@store')->name('store');
+Route::get('/role/delete-roles/{id}','RolesController@destroy')->name('destroy');
+
 Route::get('/member','MembersController@index')->name('index');
+
 Route::get('/location','LocationsController@index')->name('index');
+Route::get('/location/delete/{id}','LocationsController@destroy')->name('destroy');
 
 Route::get('/admin-user','AdminController@index')->name('index');
 Route::get('/admin-user/add-admin','AdminController@create')->name('create');
@@ -44,6 +53,9 @@ Route::get('/holiday-request-get-all-details','HolidayController@index')->name('
 
 Route::get('/voucher','VoucherController@index')->name('index');
 
+Route::get('/configuration-detail','ConfigurationController@index')->name('index');
+Route::get('/configuration-detail/delete-config/{id}','ConfigurationController@destroy')->name('destroy');
+Route::get('/configuration-detail/edit-config/{id}','ConfigurationController@edit')->name('edit');
 
 Auth::routes();
 

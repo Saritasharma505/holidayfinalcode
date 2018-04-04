@@ -48,7 +48,7 @@
                         </li>
 
                         <li>
-                            <a href="{{url('/product')}}"><i class="fa fa-cogs"></i> Configuration</a>
+                            <a href="{{url('/configuration-detail')}}"><i class="fa fa-cogs"></i> Configuration</a>
                         </li>
                         <li>
                             <a href="{{url('/holiday-request-get-all-details')}}"><i class="fa fa-envelope-square"></i>

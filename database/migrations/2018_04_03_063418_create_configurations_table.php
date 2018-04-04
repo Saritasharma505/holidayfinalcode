@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTblLocationsTable extends Migration
+class CreateConfigurationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,19 @@ class CreateTblLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_locations', function (Blueprint $table) {
+        Schema::create('configurations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('locationName');
-             $table->string('parent_id');
-              $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     * (`id`, `locationName`, `parent_id`, `status`)
+     *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_locations');
+        Schema::dropIfExists('configurations');
     }
 }
