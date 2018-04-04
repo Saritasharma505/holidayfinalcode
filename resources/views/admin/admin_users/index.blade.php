@@ -323,25 +323,25 @@
                                         <?php echo csrf_field();?>
                                         <div class="form-group">
                                             <label>DSA Name</label>
-                                            <input class="form-control" name="name" id="dsa_name">
+                                            <input type="text" class="form-control" name="name" id="dsa_name" required>
                                             
                                         </div>
                                         <div class="form-group">
                                             <label>Email-ID</label>
-                                            <input class="form-control" name="email" id="dsa_email" placeholder="Enter Email-Id">
+                                            <input type="email" class="form-control" name="email" id="dsa_email" placeholder="Enter Email-Id" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" name="password" id="dsa_pass" placeholder="Password">
+                                            <input class="form-control" name="password" id="dsa_pass" placeholder="Password" required>
                                         </div>
                                        
                                         <div class="form-group">
                                             <label>Mobile No.</label>
-                                            <input class="form-control" name="phone" id="dsa_phone" placeholder="Enter text">
+                                            <input class="form-control" name="phone" id="dsa_phone" placeholder="Enter text" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Role</label>
-                                            <select class="form-control" name="role" id="dsa_role" placeholder="Enter text">
+                                            <select class="form-control" name="role" id="dsa_role" placeholder="Enter text" required>
                                                 <option>Please Select Role</option>
                                                 <?php foreach($roles as $role){?>
                                                 <option value="<?php echo $role->roleId?>"><?php echo $role->role?></option><?php }?>
@@ -349,7 +349,7 @@
 
                                         <div class="form-group">
                                             <label>Location</label>
-                                            <select  class="form-control" name="location" id="location" placeholder="Enter text">
+                                            <select  class="form-control" name="location" id="location" placeholder="Enter text" required>
                                                 <option>Please Select</option>
                                                 <?php foreach($locations as $location){ ?>
                                                 <option value="<?php echo $location->id;?>"><?php echo $location->locationName;?></option>

@@ -303,10 +303,7 @@
                         <label> Location Name</label>
                         <input type="text" name="locationName" id="locationName">
                     </div>
-                    <div class="form-group">
-                        <label>Assign TO</label>
-                        <input type="text" name="assignSections" id="assignSections">
-                    </div>
+                    
                    
                   </div>
                   <div class="modal-footer">

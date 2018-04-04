@@ -36,6 +36,7 @@ Route::get('/',function(){
 Route::get('/role','RolesController@index')->name('index');
 Route::post('/role/store','RolesController@store')->name('store');
 Route::get('/role/delete-roles/{id}','RolesController@destroy')->name('destroy');
+Route::get('/role/edit-role/{id}','RolesController@edit')->name('edit');
 
 Route::get('/member','MembersController@index')->name('index');
 
@@ -47,6 +48,7 @@ Route::get('/admin-user/add-admin','AdminController@create')->name('create');
 Route::get('/admin-user/edit-admin/{id}','AdminController@edit')->name('edit');
 Route::get('/admin-user/delete-admin/{id}','AdminController@destroy')->name('destroy');
 Route::post('/admin-user/store-admin','AdminController@store')->name('store');
+Route::post('/admin-user/update-admin/','AdminController@update')->name('update');
 
 Route::get('/payment','PaymentController@index')->name('index');
 Route::get('/holiday-request-get-all-details','HolidayController@index')->name('index');

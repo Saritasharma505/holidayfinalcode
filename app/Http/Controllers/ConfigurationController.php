@@ -17,7 +17,7 @@ class ConfigurationController extends Controller
     public function index()
     {
         $config_details= DB::table('tbl_admins')->get();
-        return view('admin.config.index',compact('config_details'));
+        return view('admin.configuration.index',compact('config_details'));
     }
 
     /**

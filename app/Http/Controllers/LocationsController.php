@@ -14,6 +14,7 @@ class LocationsController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+    id  locationName    parent_id   status 
      */
     public function index()
     {
@@ -39,7 +40,8 @@ class LocationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $locationName=$request->input('locationName');
+       
     }
 
     /**

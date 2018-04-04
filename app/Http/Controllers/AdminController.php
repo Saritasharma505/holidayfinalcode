@@ -96,9 +96,20 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $name = $request->input('name');
+        $id = $request->input('id');
+        $email = $request->input('email');
+      // $today = date("y/m/d");
+         $phone = $request->input('phone');
+        $password = $request->input('password');
+        $role = $request->input('roles');
+         $location = $request->input('location');
+      
+     $data= DB::update("UPDATE `tbl_webusers` SET `name`='$name',`email`='$email',`phone`='$phone',`password`='$password',`role`='$role',`location`='$location' WHERE `id`= $id");
+     Session::flash('message','Record Updated Successfully!!');
+     return  redirect()->action('AdminController@index');
     }
 
     /**

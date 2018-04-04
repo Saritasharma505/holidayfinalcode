@@ -278,7 +278,7 @@
                                          <td><?= $config_detail->amc_amount;?></td>
 
 
-                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/config_detail/edit-config')}}/<?= $config_detail->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{ url('/configuration-detail/delete-config')}}/<?= $config_detail->id;?>" onclick="return confirm('Are you sure you want to delete this item?');"></a></td>
+                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/configuration-detail/edit-config')}}/<?= $config_detail->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{ url('/configuration-detail/delete-config')}}/<?= $config_detail->id;?>" onclick="return confirm('Are you sure you want to delete this item?');"></a></td>
                                     </tr>
                                     <?php }?>
                                 </tbody>

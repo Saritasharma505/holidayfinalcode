@@ -57,7 +57,6 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -68,7 +67,9 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $edit_roles = Roles::where('id',$id);
+        return view('admin.role.edit',compact('edit_roles'));
     }
 
     /**
@@ -91,8 +92,7 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        echo $id;
-       echo  $destroy_role= DB::table('tbl_roles')->where('roleId',$id)->delete();
+         $destroy_role= DB::table('tbl_roles')->where('roleId',$id)->delete();
 
         Session::flash('message','Record Deleted Successfully');
          return  redirect()->action('RolesController@index');

@@ -41,50 +41,51 @@
                                 <div class="col-md-12">
                                     <div class="col-md-6">
                                          <?php foreach($update_admins as $update_admin){?>
-                                    <form role="form">
+                                    <form  method="post" action="{{ route('update') }}">
                                         <?php echo csrf_field();?>
-                                            <input type="hidden" name="user_id" value="">
+                                           
                                         <div class="form-group">
                                             <label>DSA Name</label>
-                                            <input class="form-control" value="<?= $update_admin->name?>">
+                                            <input type="text" name="name" id="name" class="form-control" value="<?= $update_admin->name?>">
                                             
                                         </div>
                                         <div class="form-group">
                                             <label>Email-ID</label>
-                                            <input class="form-control" placeholder="Enter Email-Id" value="<?= $update_admin->email?>">
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email-Id" value="<?= $update_admin->email?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" placeholder="Password">
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <label>Confirm-Password</label>
-                                            <input class="form-control" placeholder="Confirm-Password">
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Confirm-Password">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Mobile No.</label>
-                                            <input class="form-control" placeholder="Enter text" value="<?= $update_admin->phone?>">
+                                            <input type="phone" name="phone" id="phone" class="form-control" placeholder="Enter text" value="<?= $update_admin->phone;?>">
                                         </div>
+                                       
                                         <div class="form-group">
                                             <label>Role</label>
-                                            <select class="form-control" placeholder="Enter text">
+                                            <select class="form-control" name="roles" placeholder="Enter text">
                                                 
                                                 <?php foreach($roles as $role){?>
                                                 <option value="<?php echo $role->roleId?>"><?php echo $role->role?></option><?php }?>
-                                        </select></div>
+                                        </select>
+                                    </div>
                                         <div class="form-group">
                                             <label>Location</label>
-                                            <select  class="form-control" placeholder="Enter text">
-                                                <?php foreach($roles as $role)?>
-                                               <option value="<?php echo $role->roleId;?>"><?php echo $role->role;?></option>
-                                                <?php foreach($locations as $location){ ?>
+                                         <select  class="form-control" name="location" placeholder="Enter text">
+                                              <?php foreach($locations as $location){ ?>
                                                 <option value="<?php echo $location->id;?>"><?php echo $location->locationName;?></option>
                                                 <?php }?>
                                             </select>
                                         </div>
                                          
+                                           <input type="hidden" name="id" id="id" value="<?= $update_admin->id;?>">
                                     </div>
                                     <div class="col-md-7 col-md-offset-5">
                                         <button type="submit" class="btn btn-info" name="submit">Submit</button>
