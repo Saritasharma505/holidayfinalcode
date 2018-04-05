@@ -296,22 +296,56 @@
                   <div class="modal-body">
                     <form method="post" action="{{ url('role/store') }}">
                         <?php echo csrf_field();?>
-                    <div class="form-group">
-                        <label> Role Name</label>
-                        <input type="text" name="role" id="role">
-                    </div>
-                    <div class="form-group">
-                        <label>Assign TO</label>
-                        <input type="text" name="assignSections" id="assignSections">
-                    </div>
-                   
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                    <button type="submit"  class="btn btn-info pull-left" name="submit" id="assignSections">Submit </button> 
-                  </div>
-                  </form>
-                </div>
+
+                              <div class="form-group">
+                                <label for="email">Role Name</label>
+                                <input type="text" class="form-check-input" id="role">
+                              </div>
+
+                              <div class="form-group">
+                                <label for="pwd">Admin Users</label>
+                                <input type="checkbox" class="form-check-input" id="admin_user">
+                              </div>
+                               <div class="form-group">
+                                <label for="pwd">Members</label>
+                                <input type="checkbox" class="form-check-input" id="memebers">
+                              </div>
+                               <div class="form-group">
+                                <label for="pwd">Users Role</label>
+                                <input type="checkbox" class="form-check-input" id="user_role">
+                              </div>
+                               <div class="form-group">
+                                <label for="pwd">Locations</label>
+                                <input type="checkbox" class="form-check-input" id="locations">
+                              </div>
+                               <div class="form-group">
+                                <label for="pwd">Vouchers</label>
+                                <input type="checkbox" class="form-check-input" id="vouchers">
+                              </div>
+                              <div class="form-group">
+                                <label for="pwd">Updates</label>
+                                <input type="checkbox" class="form-check-input" id="updates">
+                              </div>
+                               <div class="form-group">
+                                <label for="pwd">Feedback</label>
+                                <input type="checkbox" class="form-check-input" id="feedback">
+                              </div>
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                        
+                
+          <!--   <div class="well" style="max-height: 300px;overflow: auto;">
+                <ul class="list-group checked-list-box">
+                  <li class="list-group-item">Admin Users</li>
+                  <li class="list-group-item" data-checked="true">Members</li>
+                  <li class="list-group-item">Users Role</li>
+                  <li class="list-group-item">Locations</li>
+                  <li class="list-group-item">Vouchers</li>
+                  <li class="list-group-item">Updates</li>
+                  <li class="list-group-item">FeedBack</li> 
+                </ul>
+            </div> -->
+        </div></div>
+                  
             </div>
         </div>
             <!-- /.row -->

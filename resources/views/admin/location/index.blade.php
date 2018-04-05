@@ -303,7 +303,13 @@
                         <label> Location Name</label>
                         <input type="text" name="locationName" id="locationName">
                     </div>
-                    
+                    <div class="form-group">
+                      
+                        <label>Status</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="radio" name="status">Active</label>&nbsp;&nbsp;&nbsp;<label><input type="radio" name="status">Deactive</label>
+                        
+                     </div>
+
+
                    
                   </div>
                   <div class="modal-footer">

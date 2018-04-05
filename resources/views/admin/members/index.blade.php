@@ -233,7 +233,7 @@
          <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><a href="{{url('add')}}">Add</a></h3>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD </button>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -242,7 +242,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                            Members List
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -316,7 +316,7 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            
+                    
             <!-- /.row -->
         </div>
             

@@ -323,7 +323,7 @@
                                         <?php echo csrf_field();?>
                                         <div class="form-group">
                                             <label>DSA Name</label>
-                                            <input type="text" class="form-control" name="name" id="dsa_name" required>
+                                            <input type="text" class="form-control" name="name" id="dsa_name" placeholder="Enter DSA Name" required>
                                             
                                         </div>
                                         <div class="form-group">
@@ -337,11 +337,11 @@
                                        
                                         <div class="form-group">
                                             <label>Mobile No.</label>
-                                            <input class="form-control" name="phone" id="dsa_phone" placeholder="Enter text" required>
+                                            <input class="form-control" name="phone" id="dsa_phone" placeholder="Enter Phone" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Role</label>
-                                            <select class="form-control" name="role" id="dsa_role" placeholder="Enter text" required>
+                                            <select class="form-control" name="role" id="dsa_role"  required>
                                                 <option>Please Select Role</option>
                                                 <?php foreach($roles as $role){?>
                                                 <option value="<?php echo $role->roleId?>"><?php echo $role->role?></option><?php }?>

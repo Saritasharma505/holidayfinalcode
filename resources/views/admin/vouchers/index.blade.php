@@ -243,7 +243,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                            
-                           <a class="btn btn-primary" href="{{url('add')}}">ADD Voucher</a>
+                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Voucher </button>
                
                         </div>
                         <!-- /.panel-heading -->
@@ -277,7 +277,7 @@
                                          <td><?= $voucher->dsaName ;?></td>
                                          <td><?= $voucher->location_id?></td>
                                          
-                                        <td><a  class="fa fa-pencil" href="{{url('/holiday-request-get-all-details/edit')}}/<?= $voucher->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash" href=""></a></td>
+                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/voucher/edit')}}/<?= $voucher->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{url('/voucher/delete')}}"></a></td>
                                     </tr>
                                     <?php }?>
                                 </tbody>
