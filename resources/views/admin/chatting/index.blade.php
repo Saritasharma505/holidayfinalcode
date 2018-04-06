@@ -231,46 +231,39 @@
         </nav>
 
          <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Add Role</button>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+            
             <!-- /.row -->
-            <div class="row">
+            <div class="row" style="margin-top: 20px;">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Roles List
+                            DataTables Advanced Tables
                         </div>
-                     @if (Session::has('message'))
-                         <div id="alert" class="alert alert-info">{{ Session::get('message') }}</div>
-                    @endif
-
-                   
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>Membership Id</th>
                                         <th>Name</th>
-                                        <th>Assign To</th>
+                                        <th>Phone Number</th>
+                                        <th>Subject</th>
+                                        <th>Messages</th>
                                         <th>Action</th>
-                                        
                                     </tr>
-                                </thead> 
+                                </thead>
                                 <tbody>
-                                    <?php $i=1; foreach($roles as $role){?>
+                                @foreach($messagess as $message)
                                     <tr class="odd gradeX">
-                                        <td><?= $i++;?></td>
-                                        <td><?= $role->role;?></td>
-                                        <td><?= $role->assignSections;?></td>
-                                        <td><a class="fa fa-pencil btn btn-primary" href="{{url('role/edit-role')}}/<?= $role->roleId;?>"></a>&nbsp;&nbsp;&nbsp;
-                                            <a class="fa fa-trash btn btn-danger" href="{{url('role/delete-roles')}}/<?= $role->roleId;?>" onclick="return confirm('Are you sure you want to delete this item?');"></a></td>
+                                        <td>{{$message->membership_id}}</td>
+                                        <td>{{$message->name}}</td>
+                                        <td>{{$message->phone}}</td>
+                                        <td>{{$message->subject}}</td>
+                                        <td class="center">{{$message->messages}} </td>
+                                        <td class="center"><a data-toggle="modal" data-target="#reply" class="btn btn-primary fa fa-reply" href=""></a>&nbsp;&nbsp;<a class="fa fa-comments  btn btn-info" data-toggle="modal" data-target="#send" href=""></a></td>
                                     </tr>
-                                   <?php }?>
+                                    @endforeach
+                                    
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -282,86 +275,76 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-             <div id="myModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
+            <!-- /.row -->
+            <div id="reply" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content ">
-                  <div class="modal-header ">
-
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add Role</h4>
-                  </div>
-                  
-                  <div class="modal-body">
-                    <form method="post" action="{{ url('role/store') }}">
-                        <?php echo csrf_field();?>
-
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Reply</h4>
+                      </div>
+                      <div class="modal-body col-lg-12" >
+                      
+                        <form>
                               <div class="form-group">
-                                <label for="email">Role Name</label>
-                                <input type="text"  id="role">
+                                <label for="membershipId">Membership ID</label>
+                                <input type="membershipId" class="form-control" id="membershipId" value="">
                               </div>
-                         <table>
-                            <tr>
                               <div class="form-group">
-                              <td>  <label for="pwd">Admin Users</label></td>
-                               <td> <input type="checkbox" class="form-check-input" id="admin_user">
-                              </td>
+                                <label for="name">Name </label>
+                                <input type="name" class="form-control" id="name" value="">
                               </div>
-                          </tr>
-                          <tr>
-                               <div class="form-group">
-                                <td><label for="pwd">Members</label></td>
-                                <td><input type="checkbox" class="form-check-input" id="memebers"></td>
-                              </div>
-                            </tr>
-                            <tr>
-                               <div class="form-group">
-                              <td>  <label for="pwd">Users Role</label></td>
-                                <td><input type="checkbox" class="form-check-input" id="user_role"></td>
-                              </div>
-                              </tr>
-                              <tr>
-                               <div class="form-group">
-                                <td><label for="pwd">Locations</label></td>
-                                <td><input type="checkbox" class="form-check-input" id="locations"></td>
-                              </div>
-                              </tr>
-                              <tr>
-                               <div class="form-group">
-                                <td><label for="pwd">Vouchers</label></td>
-                              <td>  <input type="checkbox" class="form-check-input" id="vouchers"></td>
-                              </div></tr>
-                              <tr>
                               <div class="form-group">
-                                <td><label for="pwd">Updates</label></td>
-                                <td><input type="checkbox" class="form-check-input" id="updates"></td>
-                              </div></tr>
-                               <tr><div class="form-group">
-                                <td><label for="pwd">Feedback</label></td>
-                                <td><input type="checkbox" class="form-check-input" id="feedback"></td>
-                              </div></tr>
-                              </table>
-                              <button type="submit" class="btn btn-primary">Submit</button>
+                                <label for="phone">Phone Number</label>
+                                <input type="phone" class="form-control" id="phone" value="">
+                              </div>
+                              <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="subject" class="form-control" id="subject" value="">
+                              </div>
+                              <div class="form-group">
+                                <label for="meassage">Comment</label>
+                                <textarea name="meassage" id="meassage" class="form-control" ></textarea>
+                              </div>
+                              <div class="form-group">
+                                <label for="reply">Reply</label>
+                                <textarea name="reply" id="reply" class="form-control" ></textarea>
+                              </div>
+                             
+                              <button type="submit" class="btn btn-default">Submit</button>
+                            </form> 
                         
-                
-          
-        </div></div>
-                  
-            </div>
-        </div>
-            <!-- /.row -->
-            
-            <!-- /.row -->
- <script>
-   window.setTimeout(function() {
-        $(".alert").fadeTo(500, 0).slideUp(500, function(){
-        $(this).remove(); 
-        });
-        }, 4000);
-    </script>
-  </div>
 
-    
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div id="send" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Send</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+            <!-- /.row -->
+        </div>
             
 @include('admin.layout.footer')

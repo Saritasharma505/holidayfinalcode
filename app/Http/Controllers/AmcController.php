@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Configuration;
-use Illuminate\Support\Facades\Session;
 use DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\RedirectRespones;
+use App\Amc;
 
-
-class ConfigurationController extends Controller
+class AmcController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +15,8 @@ class ConfigurationController extends Controller
      */
     public function index()
     {
-        $conf=DB::table('tbl_admins')->get();
-        return view('admin.configurations.index',compact('conf'));
+        $amc = DB::table('tbl_amcdetails')->get();
+        return view('admin.amc.index', compact('amc'));
     }
 
     /**
@@ -30,7 +26,7 @@ class ConfigurationController extends Controller
      */
     public function create()
     {
-        
+        return view('admin.amc.add');
     }
 
     /**
@@ -63,10 +59,8 @@ class ConfigurationController extends Controller
      */
     public function edit($id)
     {
-
-        $conf= Configuration::where('id',$id)->get();
-        // dd($conf);die();
-        return view('admin.configurations.edit', compact('conf'));
+        $amcs = Amc::where('id',$id)->get();
+        return view('admin.amc.edit',compact('amcs'));
     }
 
     /**
@@ -76,20 +70,9 @@ class ConfigurationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $id = $request->input('id');
-        $admin_id = $request->input('admin_id');
-        $site_name = $request->input('site_name');
-        $admin_amount = $request->input('admin_amount');
-        $amc_amount = $request->input('amc_amount');
-
-        $data =Configuration::where('id',$id)->update(['admin_id'=>$admin_id, 'site_name'=>$site_name, 'admin_amount'=>$admin_amount, 'amc_amount'=>$amc_amount] );
-       // dd($data); die();
-       return redirect()->action('ConfigurationController@index');
-
-
-
+        //
     }
 
     /**
@@ -100,9 +83,8 @@ class ConfigurationController extends Controller
      */
     public function destroy($id)
     {
-         $del=DB::table('tbl_admins')->where('id', $id)->delete();
-         //Message Print
-         Session::flash('message', 'Delete Yes');
-         return back();
+         Amc::where('id',$id)->delete();
+        return back();
+    
     }
 }

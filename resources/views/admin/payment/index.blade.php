@@ -232,9 +232,8 @@
 
          <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
-                    <h3 class="page-header"><a href="{{url('add')}}">Add</a></h3>
-                </div>
+                
+               
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
@@ -242,7 +241,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                           <a href="{{url('/payment/add')}}" type="button" class="btn btn-primary btn-md">Add Payment </a>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -277,7 +276,8 @@
                                          
                                          
 
-                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/member/edit')}}/<?= $payment->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href=""></a></td>
+                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/payment/edit')}}/<?= $payment->id;?>"></a>&nbsp;&nbsp;&nbsp;
+                                        <a class="fa fa-trash btn btn-danger" href="{{ url('/payment/del')}}/<?= $payment->id;?>"></a></td>
                                     </tr>
                                     <?php }?>
                                 </tbody>

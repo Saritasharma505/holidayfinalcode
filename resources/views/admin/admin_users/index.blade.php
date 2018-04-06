@@ -285,7 +285,7 @@
                                          <?php } ?>
 
                                          <?php foreach($locations as $location){
-                                         if($location->id==$admin->location) { ?>
+                                         if($location->id == $admin->location) { ?>
                                          <td><?= $location->locationName;?></td>
                                         <?php  } ?>
 

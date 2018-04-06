@@ -18,7 +18,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-messages">
+                    <ul class="dropdown-menu dropdown-confss">
                         <li>
                             <a href="#">
                                 <div>
@@ -57,12 +57,12 @@
                         <li class="divider"></li>
                         <li>
                             <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
+                                <strong>Read All confss</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-messages -->
+                    <!-- /.dropdown-confss -->
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
@@ -170,7 +170,7 @@
                         <li>
                             <a href="#">
                                 <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <i class="fa fa-envelope fa-fw"></i> confs Sent
                                     <span class="pull-right text-muted small">4 minutes ago</span>
                                 </div>
                             </a>
@@ -231,60 +231,49 @@
         </nav>
 
          <div id="page-wrapper">
-            <div class="row">
-               
-                <!-- /.col-lg-12 -->
-            </div>
+            
             <!-- /.row -->
-            <div class="row">
+            <div class="row" style="margin-top: 20px;">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD </button>
-                          <!--  @if (session('success'))
-                                <div class="flash-message">
-                                <div class="alert alert-success">
-
-                                </div>
-                                </div>
-                            @endif -->
-                            @if (Session::has('message'))
-                                 <div id="alert" class="alert alert-info">{{ Session::get('message') }}</div>
-                            @endif
+                            Configuration Edit
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="pre-scrollable">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Admin Name</th>
-                                        <th>Site Name</th>
-                                        <th>Admin Amount</th>
-                                        <th>AMC Amount</th>
-                                        <th>Action</th>
-                                       
-                                    </tr>
-                                </thead>
-                                
-                                <tbody>
-                                    <?php $i=1; foreach($config_details as $config_detail){?>
-                                    <tr class="odd gradeX">
-                                       <td><?= $i++;?></td>
-                                        <td><?= $config_detail->admin_id;?></td>
-                                         <td><?= $config_detail->site_name;?></td>
-                                         <td><?= $config_detail->admin_amount;?></td>
-                                         <td><?= $config_detail->amc_amount;?></td>
-
-
-                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/configuration-detail/edit-config')}}/<?= $config_detail->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{ url('/configuration-detail/delete-config')}}/<?= $config_detail->id;?>" onclick="return confirm('Are you sure you want to delete this item?');"></a></td>
-                                    </tr>
-                                    <?php }?>
-                                </tbody>
-
-                            </table>
-                            </div><!-- /.table-responsive -->
+                          
+                       <?php foreach($conf as $confs) { ?>
+                        <form method="post" action="{{ url('configuration/update') }}">
+                                    <?php echo csrf_field();?>                     
+                               
+                                <div class="form-group">
+                                <label for="id"> ID</label>
+                                <input type="text" name="id" class="form-control" id="id" value="<?php echo $confs->id;?>">
+                              </div>
+                              <div class="form-group">
+                                <label for="admin_id">Admin ID</label>
+                                <input type="text" name="admin_id" class="form-control" id="admin_id" value="<?php echo $confs->admin_id;?>">
+                              </div>
+                              <div class="form-group">
+                                <label for="site_name">Site Name </label>
+                                <input type="text" name="site_name" class="form-control" id="site_name" value="<?php echo $confs->site_name;?>">
+                              </div>
+                              <div class="form-group">
+                                <label for="admin_amount">Admin Amount</label>
+                                <input type="text" name="admin_amount" class="form-control" id="admin_amount" value="<?php echo $confs->admin_amount;?>">
+                              </div>
+                              <div class="form-group">
+                                <label for="amc_amount">AMC Amount</label>
+                                <input type="text" name="amc_amount" class="form-control" id="amc_amount" value="<?php echo $confs->amc_amount;?>">
+                              </div>
+                              
+                             
+                              <button type="submit" name="submit" class="btn btn-default">Submit</button>
+                            </form> 
+                        
+                            <?php }?>
+                     
+                            <!-- /.table-responsive -->
                             
                         </div>
                         <!-- /.panel-body -->
@@ -294,63 +283,27 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            <!-- model -->
-            <div id="myModal" class="modal fade" role="dialog">
-                      <div class="modal-dialog">
+            
+               <div id="send" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
 
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                           
-                            <h4 class="modal-title">Add Admin</h4>
-                          </div>
-                          <div class="modal-body">
-                       
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Send</h4>
+                      </div>
+                      <div class="modal-body">
                         
-                                    <form role="form" method="post" action="{{ route('store') }}">
-                                        <?php echo csrf_field();?>
-                                        <div class="form-group">
-                                            <label>DSA Name</label>
-                                            <input class="form-control" name="name" id="dsa_name">
-                                            
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email-ID</label>
-                                            <input class="form-control" name="email" id="dsa_email" placeholder="Enter Email-Id">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input class="form-control" name="password" id="dsa_pass" placeholder="Password">
-                                        </div>
-                                       
-                                        <div class="form-group">
-                                            <label>Mobile No.</label>
-                                            <input class="form-control" name="phone" id="dsa_phone" placeholder="Enter text">
-                                        </div>
-                                       
-                                        <button type="submit" class="btn btn-info" name="submit">Submit</button>
-                                        
-                                    </form>
-                                
-                 
-                         
-                          <div class="modal-footer">
-                            
-                          </div>
-                        </div>
-
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       </div>
                     </div>
-            <!-- close -->
-            
+
+                  </div>
+                </div> 
             <!-- /.row -->
         </div>
-      
-    <script>
-   window.setTimeout(function() {
-    $(".alert").fadeTo(500, 0).slideUp(500, function(){
-        $(this).remove(); 
-    });
-}, 4000);
-    </script>
+            
 @include('admin.layout.footer')

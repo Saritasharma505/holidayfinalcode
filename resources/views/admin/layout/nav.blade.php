@@ -44,18 +44,18 @@
                         </li>
 
                         <li>
-                            <a href="{{url('/amc-update')}}"><i class="fa fa-cc-mastercard"></i> AMC Update</a>
+                            <a href="{{url('/amc')}}"><i class="fa fa-cc-mastercard"></i> AMC Update</a>
                         </li>
 
                         <li>
-                            <a href="{{url('/configuration-detail')}}"><i class="fa fa-cogs"></i> Configuration</a>
+                            <a href="{{url('/configuration')}}"><i class="fa fa-cogs"></i> Configuration</a>
                         </li>
                         <li>
                             <a href="{{url('/holiday-request-get-all-details')}}"><i class="fa fa-envelope-square"></i>
  Holidays Request</a>
                         </li>
                         <li>
-                            <a href="{{url('/product')}}"><i class="fa fa-comments "></i> Chatting</a>
+                            <a href="{{url('/chat')}}"><i class="fa fa-comments "></i> Customer Support</a>
                         </li>
                         <li>
                             <a href="{{url('/product')}}"><i class="fa fa-table fa-fw"></i> Export Data</a>

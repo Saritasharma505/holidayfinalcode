@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Payment;
 
 class PaymentController extends Controller
 {
@@ -25,7 +26,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.payment.add');
     }
 
     /**
@@ -58,7 +59,8 @@ class PaymentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $paymentEdit = Payment::where('id',$id)->get();
+        return view('admin.payment.edit', compact('paymentEdit'));
     }
 
     /**
@@ -81,6 +83,7 @@ class PaymentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Payment::where('id',$id)->delete();
+        return back();
     }
 }

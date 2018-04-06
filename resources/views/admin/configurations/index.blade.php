@@ -18,7 +18,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-messages">
+                    <ul class="dropdown-menu dropdown-confss">
                         <li>
                             <a href="#">
                                 <div>
@@ -57,12 +57,12 @@
                         <li class="divider"></li>
                         <li>
                             <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
+                                <strong>Read All confss</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-messages -->
+                    <!-- /.dropdown-confss -->
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
@@ -170,7 +170,7 @@
                         <li>
                             <a href="#">
                                 <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <i class="fa fa-envelope fa-fw"></i> confs Sent
                                     <span class="pull-right text-muted small">4 minutes ago</span>
                                 </div>
                             </a>
@@ -231,46 +231,46 @@
         </nav>
 
          <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Add Role</button>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+            
             <!-- /.row -->
-            <div class="row">
+            <div class="row" style="margin-top: 20px;">
                 <div class="col-lg-12">
+                   @if(Session::has('message'))
+                        <div id="alert" class="alert alert-info">{{Session::get('message')}}</div>
+                        @endif
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Roles List
+                            DataTables Advanced Tables
                         </div>
-                     @if (Session::has('message'))
-                         <div id="alert" class="alert alert-info">{{ Session::get('message') }}</div>
-                    @endif
-
-                   
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Assign To</th>
+                                        <th> Id</th>
+                                        <th>Admin Id</th>
+                                        <th>Site Name</th>
+                                        <th>Admin Amount</th>
+                                        <th>AMC Amount</th>
                                         <th>Action</th>
-                                        
                                     </tr>
-                                </thead> 
+                                </thead>
                                 <tbody>
-                                    <?php $i=1; foreach($roles as $role){?>
+                                <?php  $i=1;?>
+                                 @foreach($conf as $confs) 
                                     <tr class="odd gradeX">
-                                        <td><?= $i++;?></td>
-                                        <td><?= $role->role;?></td>
-                                        <td><?= $role->assignSections;?></td>
-                                        <td><a class="fa fa-pencil btn btn-primary" href="{{url('role/edit-role')}}/<?= $role->roleId;?>"></a>&nbsp;&nbsp;&nbsp;
-                                            <a class="fa fa-trash btn btn-danger" href="{{url('role/delete-roles')}}/<?= $role->roleId;?>" onclick="return confirm('Are you sure you want to delete this item?');"></a></td>
+                                        <td><?php echo $i++;?></td>
+                                        <td>{{$confs->admin_id}}</td>
+                                        <td>{{$confs->site_name}}</td>
+                                        <td>{{$confs->admin_amount}}</td>
+                                        <td class="center">{{$confs->amc_amount}} </td>
+
+                                        <td class="center"><a  class="btn btn-primary fa fa-pencil" href="{{url('/configuration/edit')}}/{{$confs->id}}"></a>
+                                        &nbsp;&nbsp;
+                                        <a class="fa fa-trash  btn btn-danger" href="{{url('/configuration/del')}}/{{$confs->id}}"></a></td>
                                     </tr>
-                                   <?php }?>
+                                    @endforeach 
+                                    
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -282,86 +282,9 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-             <div id="myModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content ">
-                  <div class="modal-header ">
-
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add Role</h4>
-                  </div>
-                  
-                  <div class="modal-body">
-                    <form method="post" action="{{ url('role/store') }}">
-                        <?php echo csrf_field();?>
-
-                              <div class="form-group">
-                                <label for="email">Role Name</label>
-                                <input type="text"  id="role">
-                              </div>
-                         <table>
-                            <tr>
-                              <div class="form-group">
-                              <td>  <label for="pwd">Admin Users</label></td>
-                               <td> <input type="checkbox" class="form-check-input" id="admin_user">
-                              </td>
-                              </div>
-                          </tr>
-                          <tr>
-                               <div class="form-group">
-                                <td><label for="pwd">Members</label></td>
-                                <td><input type="checkbox" class="form-check-input" id="memebers"></td>
-                              </div>
-                            </tr>
-                            <tr>
-                               <div class="form-group">
-                              <td>  <label for="pwd">Users Role</label></td>
-                                <td><input type="checkbox" class="form-check-input" id="user_role"></td>
-                              </div>
-                              </tr>
-                              <tr>
-                               <div class="form-group">
-                                <td><label for="pwd">Locations</label></td>
-                                <td><input type="checkbox" class="form-check-input" id="locations"></td>
-                              </div>
-                              </tr>
-                              <tr>
-                               <div class="form-group">
-                                <td><label for="pwd">Vouchers</label></td>
-                              <td>  <input type="checkbox" class="form-check-input" id="vouchers"></td>
-                              </div></tr>
-                              <tr>
-                              <div class="form-group">
-                                <td><label for="pwd">Updates</label></td>
-                                <td><input type="checkbox" class="form-check-input" id="updates"></td>
-                              </div></tr>
-                               <tr><div class="form-group">
-                                <td><label for="pwd">Feedback</label></td>
-                                <td><input type="checkbox" class="form-check-input" id="feedback"></td>
-                              </div></tr>
-                              </table>
-                              <button type="submit" class="btn btn-primary">Submit</button>
-                        
-                
-          
-        </div></div>
-                  
-            </div>
-        </div>
             <!-- /.row -->
             
             <!-- /.row -->
- <script>
-   window.setTimeout(function() {
-        $(".alert").fadeTo(500, 0).slideUp(500, function(){
-        $(this).remove(); 
-        });
-        }, 4000);
-    </script>
-  </div>
-
-    
+        </div>
             
 @include('admin.layout.footer')

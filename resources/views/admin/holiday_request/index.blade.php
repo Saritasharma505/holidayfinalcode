@@ -233,7 +233,7 @@
          <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><a href="{{url('add')}}">Add</a></h3>
+                   <!--  <h3 class="page-header"><a href="{{url('add')}}">Add</a></h3> -->
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -258,7 +258,7 @@
                                         <th>Total Person</th>
                                         <th>Apartment</th>
                                         <th>Total Days</th>
-                                          <th>Action</th>
+                                        <th>Action</th>
                                         
                                        
                                     </tr>
