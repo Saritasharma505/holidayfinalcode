@@ -20,17 +20,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('posts', 'PostController');
 
-    //Backend
-    // Controllers Within The "App\Http\Controllers\Admin" Namespace
-    // Matches The "/admin/ControllerName" URL
-    Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'adminProtect'], function()
-    {
-        Route::get('booking', 'BookingController@index');
-    });
 });
 
 Route::get('/',function(){
-    return view('admin.login');
+    return view('auth.login');
    });
 
 Route::get('/role','RolesController@index')->name('index');
@@ -42,6 +35,7 @@ Route::get('/member','MembersController@index')->name('index');
 
 Route::get('/location','LocationsController@index')->name('index');
 Route::get('/location/delete/{id}','LocationsController@destroy')->name('destroy');
+Route::get('/location/edit/{id}','LocationsController@edit')->name('edit');
 
 Route::get('/admin-user','AdminController@index')->name('index');
 Route::get('/admin-user/add-admin','AdminController@create')->name('create');
@@ -54,6 +48,8 @@ Route::get('/payment','PaymentController@index')->name('index');
 Route::get('/holiday-request-get-all-details','HolidayController@index')->name('index');
 
 Route::get('/voucher','VoucherController@index')->name('index');
+Route::get('/voucher/edit/{id}','VoucherController@edit')->name('edit');
+Route::get('/voucher/delete/{id}','VoucherController@destroy')->name('destroy');
 
 Route::get('/configuration-detail','ConfigurationController@index')->name('index');
 Route::get('/configuration-detail/delete-config/{id}','ConfigurationController@destroy')->name('destroy');
@@ -63,3 +59,7 @@ Auth::routes();
 
 
 Route::get('/dashboard','AdminController@dashboard')->name('dashboard');
+/////////////////
+/*login*/
+
+Route::get('login','LoginController@index')->name('login');

@@ -63,7 +63,8 @@ class LocationsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit_location=Locations::where('id',$id)->get();
+        return view('admin.location.edit',compact('edit_location'));
     }
 
     /**

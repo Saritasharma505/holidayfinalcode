@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Session;
+Use App\Voucher;
 
 class VoucherController extends Controller
 {
@@ -25,7 +27,7 @@ class VoucherController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -58,7 +60,8 @@ class VoucherController extends Controller
      */
     public function edit($id)
     {
-        //
+         $update_voucher= Voucher::where('id',$id)->get();
+         return view('admin.vouchers.edit',compact('update_voucher'));
     }
 
     /**
@@ -81,6 +84,9 @@ class VoucherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete_voucher= Voucher::find($id)->delete();
+        //$request->session()->flash('message'=>'Record Deleted Successfully');
+       Session::flash('message', 'Record Deleted Successfully!!');
+       return  redirect()->action('VoucherController@index');
     }
 }

@@ -360,14 +360,9 @@
                                 
                                        
                                         <button type="submit" class="btn btn-info" name="submit">Submit</button>
-                                        
+                                        <button type="button" class="btn btn-default pull pull-right" data-dismiss="modal">Close</button>
                                     </form>
-                                
-                 
-                         
-                          <div class="modal-footer">
-                            
-                          </div>
+                        
                         </div>
 
                       </div>

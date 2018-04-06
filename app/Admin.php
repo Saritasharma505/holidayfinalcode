@@ -8,7 +8,7 @@ class Admin extends Model
 {
     protected $table='tbl_webusers'; 
 
-       $fillable = [ 'name', 'email','password','phone' ];
+      protected $fillable = [ 'name', 'email','password','phone' ];
 
     protected $hidden = ['userId'];
 }

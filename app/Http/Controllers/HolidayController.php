@@ -7,6 +7,8 @@ use DB;
 
 class HolidayController extends Controller
 {
+    
+   
     /**
      * Display a listing of the resource.
      *

@@ -246,6 +246,9 @@
                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Voucher </button>
                
                         </div>
+                         @if (Session::has('message'))
+                                 <div id="alert" class="alert alert-info">{{ Session::get('message') }}</div>
+                            @endif
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="pre-scrollable">
@@ -277,7 +280,7 @@
                                          <td><?= $voucher->dsaName ;?></td>
                                          <td><?= $voucher->location_id?></td>
                                          
-                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/voucher/edit')}}/<?= $voucher->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{url('/voucher/delete')}}"></a></td>
+                                        <td><a  class="fa fa-pencil btn btn-primary" href="{{url('/voucher/edit')}}/<?= $voucher->id;?>"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-danger" href="{{url('voucher/delete/')}}/<?= $voucher->id;?>" onclick="return confirm('Are you sure you want to delete this item?');"></a></td>
                                     </tr>
                                     <?php }?>
                                 </tbody>
@@ -292,9 +295,48 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-            
-            <!-- /.row -->
+           
+             <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header model-header-primary">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Voucher</h4>
+      </div>
+      <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="" id="name" name="name" required>
+                         </div>
+                           <div class="form-group">
+                                <label for="name">Email-Id</label>
+                                <input type="text" class="" id="email" name="email" required>
+                         </div></div>
+                         <div class="col-md-6">
+                           <div class="form-group">
+                                <label for="name">Mobile No.</label>
+                                <input type="text" class="" id="mobno" name="mobno" required>
+                         </div>
+                           <div class="form-group">
+                                <label for="name">Address</label>
+                                <input type="text"   id="address" name="address" required></input>
+                         </div></div>
+                    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
         </div>
             
 @include('admin.layout.footer')

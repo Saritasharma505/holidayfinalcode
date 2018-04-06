@@ -299,25 +299,34 @@
 
                               <div class="form-group">
                                 <label for="email">Role Name</label>
-                                <input type="text" class="form-check-input" id="role">
+                                <input type="text"  id="role">
                               </div>
-
+                         <table>
+                            <tr>
                               <div class="form-group">
-                                <label for="pwd">Admin Users</label>
-                                <input type="checkbox" class="form-check-input" id="admin_user">
+                              <td>  <label for="pwd">Admin Users</label></td>
+                               <td> <input type="checkbox" class="form-check-input" id="admin_user">
+                              </td>
                               </div>
+                          </tr>
+                          <tr>
                                <div class="form-group">
-                                <label for="pwd">Members</label>
-                                <input type="checkbox" class="form-check-input" id="memebers">
+                                <td><label for="pwd">Members</label></td>
+                                <td><input type="checkbox" class="form-check-input" id="memebers"></td>
                               </div>
+                            </tr>
+                            <tr>
                                <div class="form-group">
-                                <label for="pwd">Users Role</label>
-                                <input type="checkbox" class="form-check-input" id="user_role">
+                              <td>  <label for="pwd">Users Role</label></td>
+                                <td><input type="checkbox" class="form-check-input" id="user_role"></td>
                               </div>
+                              </tr>
+                              <tr>
                                <div class="form-group">
-                                <label for="pwd">Locations</label>
-                                <input type="checkbox" class="form-check-input" id="locations">
+                                <td><label for="pwd">Locations</label></td>
+                                <td><input type="checkbox" class="form-check-input" id="locations"></td>
                               </div>
+                              </tr>
                                <div class="form-group">
                                 <label for="pwd">Vouchers</label>
                                 <input type="checkbox" class="form-check-input" id="vouchers">
@@ -330,20 +339,11 @@
                                 <label for="pwd">Feedback</label>
                                 <input type="checkbox" class="form-check-input" id="feedback">
                               </div>
+                              </table>
                               <button type="submit" class="btn btn-primary">Submit</button>
                         
                 
-          <!--   <div class="well" style="max-height: 300px;overflow: auto;">
-                <ul class="list-group checked-list-box">
-                  <li class="list-group-item">Admin Users</li>
-                  <li class="list-group-item" data-checked="true">Members</li>
-                  <li class="list-group-item">Users Role</li>
-                  <li class="list-group-item">Locations</li>
-                  <li class="list-group-item">Vouchers</li>
-                  <li class="list-group-item">Updates</li>
-                  <li class="list-group-item">FeedBack</li> 
-                </ul>
-            </div> -->
+          
         </div></div>
                   
             </div>
