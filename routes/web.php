@@ -70,7 +70,9 @@ Route::get('/payment/add','PaymentController@create')->name('create');
 Route::get('/payment/edit/{id}','PaymentController@edit')->name('edit');
 Route::get('/payment/del/{id}','PaymentController@destroy')->name('destroy');
 
-
+//Member Section
+Route::get('/member','MembersController@index')->name('index');
+Route::get('/member/add','MembersController@create')->name('membercreate');
 
 Auth::routes();
 

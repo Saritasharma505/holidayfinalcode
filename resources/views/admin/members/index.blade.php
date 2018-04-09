@@ -233,7 +233,7 @@
          <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD </button>
+                  <a href="{{ url('/member/add')}}"><button type="button" class="btn btn-primary">ADD </button></a>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
